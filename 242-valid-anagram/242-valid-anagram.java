@@ -3,6 +3,9 @@ class Solution {
         if(s.length() != t.length())
             return false;
         
+        if(s.equals(t))
+            return true;
+        
         HashMap<Character, Integer> frequency = new HashMap<>();
         
         for(int i = 0; i < s.length(); i++) {
