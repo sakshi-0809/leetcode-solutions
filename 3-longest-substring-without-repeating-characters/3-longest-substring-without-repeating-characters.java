@@ -3,16 +3,19 @@ class Solution {
         if(s.length() == 0)
             return 0;
         
-        int start = 0, end = 1;
+        int start = 0, end = 0;
         int subsetLength = 1;
         
+        HashMap<Character, Integer> occurence = new HashMap<>();
+        
+        
         while(end < s.length()) {
-            for(int j = end - 1; j >= start; j--) {
-                if(s.charAt(end) == s.charAt(j)) {
-                    start = j + 1;
-                    break;
-                }
+            if(occurence.containsKey(s.charAt(end))) {
+                if(occurence.get(s.charAt(end)) + 1 > start)
+                    start = occurence.get(s.charAt(end)) + 1;
             }
+                
+            occurence.put(s.charAt(end), end);
             
             if(end - start + 1 > subsetLength) 
                 subsetLength = end - start + 1;
