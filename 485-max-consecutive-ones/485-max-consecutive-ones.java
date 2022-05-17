@@ -9,9 +9,6 @@ class Solution {
             }
         }
         
-        // if(i == nums.length)
-        //     return 0;
-        
         end = start;
         
         
