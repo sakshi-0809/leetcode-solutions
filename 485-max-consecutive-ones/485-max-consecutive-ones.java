@@ -6,9 +6,9 @@ class Solution {
             if(nums[start] == 0)
                 currentLength = 0;
             
-            else {
+            else
                currentLength += 1;
-            }
+        
             
             maxLength = Math.max(maxLength, currentLength);
             
