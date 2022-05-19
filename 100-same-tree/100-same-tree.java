@@ -20,7 +20,6 @@ class Solution {
         
         if((p == null && q != null) || (q == null && p != null))
             return false;
-    
         
         if(p.val != q.val)
             return false;
