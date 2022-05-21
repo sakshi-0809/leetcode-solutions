@@ -21,21 +21,25 @@ class Solution {
             return;
         }
         
-        currentSum += root.val;
-        
-        currentPath.add(root.val);
-        
         if(root.left == null && root.right == null) {
-            if(currentSum == targetSum) {
+            if(currentSum + root.val == targetSum) {
+                currentPath.add(root.val);
+                
                 result.add(new ArrayList<>(currentPath));
+                
+                currentPath.remove(currentPath.size() - 1);
             }
             
             return;
         }
         
-        helper(root.left, targetSum, currentSum, new ArrayList<>(currentPath));
+        currentPath.add(root.val);
         
-        helper(root.right, targetSum, currentSum, new ArrayList<>(currentPath));
+        helper(root.left, targetSum, currentSum + root.val, currentPath);
+        
+        helper(root.right, targetSum, currentSum + root.val, currentPath);
+        
+        currentPath.remove(currentPath.size() - 1);
     }
     
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
