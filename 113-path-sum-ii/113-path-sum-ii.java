@@ -14,7 +14,9 @@
  * }
  */
 class Solution {
-    public void helper(TreeNode root, int targetSum, int currentSum, List<Integer> currentPath, List<List<Integer>> result) {
+    List<List<Integer>> result = new ArrayList<>();
+    
+    public void helper(TreeNode root, int targetSum, int currentSum, List<Integer> currentPath) {
         if(root == null) {
             return;
         }
@@ -31,18 +33,16 @@ class Solution {
             return;
         }
         
-        helper(root.left, targetSum, currentSum, new ArrayList<>(currentPath), result);
+        helper(root.left, targetSum, currentSum, new ArrayList<>(currentPath));
         
-        helper(root.right, targetSum, currentSum, new ArrayList<>(currentPath), result);
+        helper(root.right, targetSum, currentSum, new ArrayList<>(currentPath));
     }
     
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
         if(root == null)
             return new ArrayList<>();
         
-        List<List<Integer>> result = new ArrayList<>();
-        
-        helper(root, targetSum, 0, new ArrayList<>(), result);
+        helper(root, targetSum, 0, new ArrayList<>());
         
         return result;
     }
