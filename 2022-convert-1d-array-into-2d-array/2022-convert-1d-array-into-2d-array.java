@@ -4,6 +4,11 @@ class Solution {
         
         int row = 0, column = 0;
         
+        // because if number of elements in array aren't exactly m * n
+        // then 2D array will either be left empty at some places, or 1D array will contain extra remaining elements
+        
+        // in both cases we have to return an empty array
+        
         if(original.length != m * n) 
             return new int[0][0];
         
