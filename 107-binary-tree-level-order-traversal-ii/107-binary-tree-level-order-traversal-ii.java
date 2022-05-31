@@ -41,10 +41,8 @@ class Solution {
                     elements.add(current.right);
             }
             
-            result.add(level);
+            result.add(0, level);
         }
-        
-        Collections.reverse(result);
         
         return result;
     }
