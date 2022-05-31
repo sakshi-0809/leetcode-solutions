@@ -41,6 +41,9 @@ class Solution {
                     elements.add(current.right);
             }
             
+            // adding at 0 i.e. starting 
+            // so each deeper level will get added at the beginning rather than the end
+            
             result.add(0, level);
         }
         
