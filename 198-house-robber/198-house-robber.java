@@ -15,7 +15,7 @@ class Solution {
         if(index == nums.length - 1)
             return nums[index];
         
-        int maxAmount = Math.max(helper(nums, index + 1), nums[index] + helper(nums, index + 2));
+        int maxAmount = Math.max(nums[index] + helper(nums, index + 2), helper(nums, index + 1));
         
         // memoizing or storing the max amount for a particular index 
         
