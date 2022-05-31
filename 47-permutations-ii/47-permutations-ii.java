@@ -11,6 +11,13 @@ class Solution {
             if(visited[i]) 
                 continue;
             
+            // skipping the duplicate element
+            
+            // in [1,1,2] we want to include 1 at index 1 when we are finding permutations for 1 at index 0
+            // hence we skip it only when visited[0] is true
+            
+            // thats why checking for visited[i-1] == true
+            
             if(i != 0 && nums[i] == nums[i - 1] && visited[i - 1])
                 continue;
 
