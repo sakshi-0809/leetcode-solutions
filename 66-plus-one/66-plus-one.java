@@ -12,40 +12,19 @@ class Solution {
             
         reverse(digits);
         
-        digits[0] += 1;
-        
-        if(digits[0] <= 9) {
-            reverse(digits);
-            
-            return digits;
-        }
-        
-        int i = 1, carry = 1;
-        
-        digits[0] = 0;
-        
-        while(i < digits.length) {
-            digits[i] += carry;
-            
-            if(digits[i] > 9) {
+        for(int i = 0; i < digits.length; i++) {
+            if(digits[i] != 9) {
+                digits[i] += 1;
+                break;
+            } else {
                 digits[i] = 0;
-                carry = 1;
             }
-            
-            else
-                carry = 0;
-            
-            i++;
         }
         
-        if(carry == 1) {
-            result = Arrays.copyOf(digits, digits.length + 1);
+        if(digits[digits.length - 1] == 0) {
+            digits = new int[digits.length + 1];
             
-            result[digits.length] = 1;
-            
-            reverse(result);
-            
-            return result;
+            digits[digits.length - 1] = 1;
         }
         
         reverse(digits);
