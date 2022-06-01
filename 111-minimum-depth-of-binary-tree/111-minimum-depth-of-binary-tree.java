@@ -14,24 +14,20 @@
  * }
  */
 class Solution {
-    int minDepth = Integer.MAX_VALUE;
-    
-    public int helper(TreeNode root, int currentDepth) {
+    public int helper(TreeNode root) {
         if(root == null)
             return Integer.MAX_VALUE;
         
         if(root.left == null && root.right == null)
-            return currentDepth;
+            return 1;
         
-        currentDepth += 1;
-        
-        return minDepth = Math.min(helper(root.left, currentDepth), helper(root.right, currentDepth));
+        return Math.min(helper(root.left), helper(root.right)) + 1;
     }
     
     public int minDepth(TreeNode root) {
         if(root == null)
             return 0;
         
-        return helper(root, 1);
+        return helper(root);
     }
 }
