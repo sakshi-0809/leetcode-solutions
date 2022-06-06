@@ -20,9 +20,7 @@ class Solution {
             bucket[freq].add(key);
         }
         
-        List<Integer> result =new ArrayList<>();
-        
-        int index = 0;
+        List<Integer> result = new ArrayList<>();
         
         for(int i = bucket.length - 1; i >= 0 && result.size() < k; i--){
             if (bucket[i] == null) continue;
