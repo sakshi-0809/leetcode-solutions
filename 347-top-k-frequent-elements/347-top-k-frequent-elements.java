@@ -8,11 +8,11 @@ class Solution {
             freqMap.put(n, freqMap.getOrDefault(n, 0) +1);
         }
         
-         // x and y are 2 separate objects in the queue, 
-         // compare(y[0], x[0]) means that we want to sort the queue in descending order based on the first element of the object
+        // x and y are 2 separate objects in the queue, 
+        // compare(y[0], x[0]) means that we want to sort the queue in descending order based on the first element of the object
          
-         // the object will be an int array, with [0] = value from hashmap i.e. the frequence 
-         // and [1] = key from the hashmap
+        // the object will be an int array, with [0] = value from hashmap i.e. the frequence 
+        // and [1] = key from the hashmap
          
         PriorityQueue<int[]> pq = new PriorityQueue<>((x,y) -> (Integer.compare(y[0],x[0])));
         
@@ -24,6 +24,8 @@ class Solution {
         
         int[] result = new int[k];
         
+        // popping the first k elements of the priority queue
+         
         for( int i=0; i<k;i++) {
             result[i] = pq.poll()[1];
         }
