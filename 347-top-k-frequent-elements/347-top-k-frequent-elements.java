@@ -1,8 +1,10 @@
 class Solution {
+    // Solution using Heap
+    
      public int[] topKFrequent(int[] nums, int k) {
         Map<Integer, Integer> freqMap = new HashMap<>();
         
-         // key in hashmap stores the number, and value stores the frequency of the number
+        // key in hashmap stores the number, and value stores the frequency of the number
          
         for(int n : nums) {
             freqMap.put(n, freqMap.getOrDefault(n, 0) +1);
