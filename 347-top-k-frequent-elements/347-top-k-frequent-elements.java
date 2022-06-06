@@ -1,5 +1,5 @@
 class Solution {
-    // Solution using Heap
+    // Solution using Max Heap
     
      public int[] topKFrequent(int[] nums, int k) {
         Map<Integer, Integer> freqMap = new HashMap<>();
