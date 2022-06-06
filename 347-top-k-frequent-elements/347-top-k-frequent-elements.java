@@ -1,37 +1,39 @@
 class Solution {
-    // Solution using Max Heap
+    // Solution using Bucket Sort
     
-     public int[] topKFrequent(int[] nums, int k) {
-        Map<Integer, Integer> freqMap = new HashMap<>();
+    public int[] topKFrequent(int[] nums, int k) {
+        Map<Integer, Integer> frequencies = new HashMap<>();
         
-        // key in hashmap stores the number, and value stores the frequency of the number
-         
-        for(int n : nums) {
-            freqMap.put(n, freqMap.getOrDefault(n, 0) +1);
+        for (int n: nums) {
+            frequencies.put(n, frequencies.getOrDefault(n, 0) + 1);
         }
         
-        // x and y are 2 separate objects in the queue, 
-        // compare(y[0], x[0]) means that we want to sort the queue in descending order based on the first element of the object
-         
-        // the object will be an int array, with [0] = value from hashmap i.e. the frequence 
-        // and [1] = key from the hashmap
-         
-        PriorityQueue<int[]> pq = new PriorityQueue<>((x,y) -> (Integer.compare(y[0],x[0])));
+        List<Integer> bucket[] = new ArrayList[nums.length + 1];
         
-        for(Map.Entry<Integer, Integer> e : freqMap.entrySet()) {
-            int[] newNum = {e.getValue(), e.getKey()};
-            pq.add(newNum);
+        for(int key : frequencies.keySet()){
+            int freq = frequencies.get(key);
+            
+            if(bucket[freq] == null){
+                bucket[freq] = new ArrayList<>();
+            }
+            
+            bucket[freq].add(key);
         }
         
+        int result[] = new int[k];
         
-        int[] result = new int[k];
+        int index = 0;
         
-        // popping the first k elements of the priority queue
-         
-        for( int i=0; i<k;i++) {
-            result[i] = pq.poll()[1];
+        for(int i = bucket.length - 1; i >= 0; i--){
+            if(bucket[i] != null){
+                for(int val : bucket[i]){
+                    result[index++] = val;
+                    
+                    if(index == k) return result;
+                }
+            }
         }
         
-        return result;  
+        return result;
     }
 }
