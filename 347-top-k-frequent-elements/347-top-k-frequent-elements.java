@@ -20,20 +20,27 @@ class Solution {
             bucket[freq].add(key);
         }
         
-        int result[] = new int[k];
+        List<Integer> result =new ArrayList<>();
         
         int index = 0;
         
-        for(int i = bucket.length - 1; i >= 0; i--){
-            if(bucket[i] != null){
-                for(int val : bucket[i]){
-                    result[index++] = val;
-                    
-                    if(index == k) return result;
-                }
-            }
+        for(int i = bucket.length - 1; i >= 0 && result.size() < k; i--){
+            if (bucket[i] == null) continue;
+            
+            if (bucket[i].size() <= k - result.size())
+                result.addAll(bucket[i]);
+            
+            else 
+                result.addAll(bucket[i].subList(0, k - result.size()));
         }
         
-        return result;
+        int[] topK = new int[k];
+        
+        for(int i = 0; i< k; i++)
+        {
+            topK[i] = result.get(i);
+        }
+        
+        return topK;
     }
 }
