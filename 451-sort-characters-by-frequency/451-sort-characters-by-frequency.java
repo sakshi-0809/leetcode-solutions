@@ -2,25 +2,27 @@ class Solution {
     public String frequencySort(String s) {
         HashMap<Character, Integer> frequencies = new HashMap<>();
         
-        String result = "";
-        
-        for(int i = 0; i < s.length(); i++) {
-            frequencies.put(s.charAt(i), frequencies.getOrDefault(s.charAt(i), 0) + 1);
+        for(char current: s.toCharArray()) {
+            frequencies.put(current, frequencies.getOrDefault(current, 0) + 1);
         }
         
-        PriorityQueue<Character> pq = new PriorityQueue<>((char1, char2) -> frequencies.get(char2) - frequencies.get(char1));
+        PriorityQueue<Character> maxHeap = new PriorityQueue<>(
+            (ch1, ch2) -> frequencies.get(ch2) - frequencies.get(ch1));
         
-        pq.addAll(frequencies.keySet());
+        maxHeap.addAll(frequencies.keySet());
         
-        while(pq.size() > 0) {
-            Character current = pq.poll();
+        StringBuilder result = new StringBuilder();
+        
+        while(!maxHeap.isEmpty()) {
+            char current = maxHeap.poll();
+            
             int frequency = frequencies.get(current);
             
             for(int i = 0; i < frequency; i++) {
-                result += current;
+                result.append(current);
             }
         }
         
-        return result;
+        return result.toString();
     }
 }
