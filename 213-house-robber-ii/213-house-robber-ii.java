@@ -29,6 +29,10 @@ class Solution {
         if(nums.length == 2) 
             return Math.max(nums[0], nums[1]);
         
+        // once calculate the max including the first house but excluding the last house
+        
+        // then take the max including the last house but excluding the first house, and then take the max between these two
+        
         int[] withFirstHouse = new int[nums.length - 1];
         
         int[] withLastHouse = new int[nums.length - 1];
