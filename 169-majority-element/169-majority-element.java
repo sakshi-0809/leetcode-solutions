@@ -1,18 +1,19 @@
 class Solution {
+    // Moore's Voting Algorithm
+    
     public int majorityElement(int[] nums) {
-        int majorityCount = nums.length / 2;
+        int count = 0, resultElement = 0;
         
-        HashMap<Integer, Integer> freq = new HashMap<>();
-        
-        for(int i = 0; i < nums.length; i++) {
-            freq.put(nums[i], freq.getOrDefault(nums[i], 0) + 1);
+        for(int currentElement: nums) {
+            if(count == 0)
+                resultElement = currentElement;
+            
+            if(resultElement == currentElement)
+                count++;
+            else
+                count--;
         }
         
-        for(Map.Entry<Integer, Integer> entry: freq.entrySet()) {
-            if(entry.getValue() > majorityCount)
-                return entry.getKey();
-        }
-        
-        return -1;
+        return resultElement;
     }
 }
