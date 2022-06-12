@@ -1,6 +1,5 @@
 // Alternate approach using Binary Search - https://www.youtube.com/watch?v=LHfS7bA6dCA
     
-
 class Solution {
     public int peakIndexInMountainArray(int[] arr) {
         int start = 1, end = arr.length - 1;
