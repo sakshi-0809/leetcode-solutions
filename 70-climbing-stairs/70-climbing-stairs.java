@@ -1,6 +1,4 @@
 class Solution {
-    // Bottom Up Dynamic Programming
-    
     HashMap<Integer, Integer> memo = new HashMap<>();
     
     public int climbStairs(int n) {
