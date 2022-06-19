@@ -1,5 +1,5 @@
 class Solution {
-    // Bottom Up Dynamic Programming
+    // Top Down Dynamic Programming
     
     HashMap<Integer, Integer> memo = new HashMap<>();
     
