@@ -1,24 +1,17 @@
 class Solution {
-    // Top Down Dynamic Programming
-    
-    HashMap<Integer, Integer> memo = new HashMap<>();
+    // Bottom Up Dynamic Programming
     
     public int climbStairs(int n) {
-        if(memo.containsKey(n))
-            return memo.get(n);
+        int[] dp = new int[n + 1];
         
-        if(n < 0) 
-            return 0;
+        dp[n] = 1;
         
-        if(n == 0)
-            return 1;
+        dp[n - 1] = 1;
         
-        int valFromRecursion;
+        for(int i = n - 2; i >= 0; i--) { 
+            dp[i] = dp[i + 1] + dp[i + 2];
+        }
         
-        valFromRecursion = climbStairs(n - 1) + climbStairs(n - 2);
-        
-        memo.put(n, valFromRecursion);
-        
-        return memo.get(n);
+        return dp[0];
     }
 }
